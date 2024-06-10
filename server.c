@@ -44,7 +44,6 @@ int main()
     int number1, number2;
     int result;
     int client_pid;
-    //size_t pid_size = 10;
     char resultMsg[MAX_MSG_SIZE];
     char client_pid_s[MAX_MSG_SIZE];
     char operator;
@@ -53,6 +52,9 @@ int main()
 
     while(1)
     {
+        
+        // otwieramy kolejke do otrzymywania requestów od klienta
+        
         receiveMessage(mq, msg, NULL);
         sscanf(msg, "%d %d%c%d", &client_pid, &number1, &operator, &number2);
         printf("Received: %d %c %d\n", number1, operator, number2);
@@ -82,9 +84,10 @@ int main()
             result = 0;
         }
 
+        // otwieramy kolejke ktora przeslemy wynik klientowi
+
         sprintf(client_pid_s, "/%d", client_pid);
         response = openQueue(client_pid_s, O_WRONLY);
-        openQueue("/response", O_WRONLY);
         printf("Response: %s to client: %d\n", resultMsg, client_pid);
         sendMessage(response, resultMsg, 1);
         closeQueue(response);

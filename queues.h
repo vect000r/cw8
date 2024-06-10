@@ -3,7 +3,7 @@
 
 #define MAX_MSGS 10
 #define MAX_MSG_SIZE 30
-#define QUEUE_NAME "/test_queue"
+#define QUEUE_NAME "/queue"
 
 mqd_t createQueue(const char *name, int oflag);
 mqd_t openQueue(const char *name, int oflag);

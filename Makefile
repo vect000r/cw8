@@ -45,8 +45,8 @@ run-cw8: $(EXEC1) $(EXEC2)
 	xterm -hold -title CLIENT3 -bg green -fg black -e ./$(EXEC1) 
 
 help:
-	@echo "make run-cw7		Kompiluje i uruchamia programy powielacz.c i wykluczanie.c"
-	@echo "make all			Kompiluje programy powielacz.c i wykluczanie.c"
+	@echo "make run-cw8		Kompiluje i uruchamia programy server.c i client.c w osobnych terminalach (trzech klientów)"
+	@echo "make all			Kompiluje programy server.c i client.c"
 	@echo "make clean  		Usuwa pliki .x, .o"
 
 .PHONY: clean
